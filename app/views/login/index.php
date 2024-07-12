@@ -20,12 +20,12 @@
                         <input required type="password" class="form-control" name="password" id="password">
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <input type="submit" class="btn btn-primary" value="Login">
                 </fieldset>
             </form>
             <br>
             <p><a href="/create" class="btn btn-primary">Create an Account</a></p>
         </div>
     </div>
-    <?php require_once 'app/views/templates/footer.php' ?>
 </main>
+<?php require_once 'app/views/templates/footer.php' ?>
