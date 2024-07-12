@@ -1,30 +1,27 @@
-<?php require_once 'app/views/templates/headerPublic.php' ?>
-<main role="main" class="container">
+<?php
+session_start(); // Start the session
+
+// Check if the user is logged in
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header('Location: /login');
+    exit();
+}
+
+require_once 'app/views/templates/header.php';
+?>
+<div class="container">
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12">
-                <h1>Create an Account</h1>
+                <h1>Hey, <?php echo htmlspecialchars($_SESSION['username']); ?></h1>
+                <p class="lead"> <?= date("F jS, Y"); ?></p>
             </div>
         </div>
     </div>
-
     <div class="row">
-        <div class="col-sm-auto">
-            <form action="/create/store" method="post">
-                <fieldset>
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input required type="text" class="form-control" name="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input required type="password" class="form-control" name="password">
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary">Create Account</button>
-                </fieldset>
-            </form> 
+        <div class="col-lg-12">
+            <p><a href="/logout">Click here to logout</a></p>
         </div>
     </div>
     <?php require_once 'app/views/templates/footer.php' ?>
-</main>
+</div>
